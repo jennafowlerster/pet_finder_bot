@@ -1,11 +1,10 @@
-import petfinder
-from petfinder.client import PetFinderClient
 import requests
 import rauth
 import pprint
+import config
 
-api_key = "08ef4349bcc1d9a7e81a869195ff3a9f"
-api_secret = "e0d8a6b6bfdee081e5fd8982e1057aa3"
+api_key = config.key
+api_secret = config.secret
 
 API_URL= "http://api.petfinder.com/pet.get"
 API_GET_RANDOM = "http://api.petfinder.com/pet.getRandom"
@@ -44,6 +43,6 @@ def make_story(data):
     description = data['petfinder']['pet']['description']['$t']
     pic = data['petfinder']['pet']['media']['photos']['photo'][0]['$t']
 
-    return description + pic
+    return description + "/n" + pic
 
 print(make_story(data))
